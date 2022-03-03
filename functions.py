@@ -12,21 +12,21 @@ adds the validation number to the list of people who voted for a particular
 candidate and adds one to the tally. After all the votes have been received, 
 the CTF publishes the outcome.
 """
-
-
-
+from data import *
 
 
 """
 Register to vote
 """
-def register():
-    # need user priv 
+def register(user):
+    validation_number[user] = get_validation()
+    # Encrypt 
+    priv_key[user]
     return
 
 
-def generate_validation():
-    return
+def get_validation():
+    return 12345
 
 def generate_aes():
     return

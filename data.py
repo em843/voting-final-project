@@ -3,13 +3,13 @@
 
 
 # Voters and their public keys
-public_keys = {
+public_key = {
     "grumble": 12345679,
     "goob": 432473298
 }
 
 # Validation 
-validation_numbers = {}
+validation_number = {}
 
 
 #registers
@@ -18,7 +18,7 @@ validation_numbers = {}
 # validation numbers generated on sign-in
 
 
-priv_keys = {
+priv_key = {
     "grumble": 23432432798,
     "goob": 2322343
 }
