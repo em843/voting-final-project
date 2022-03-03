@@ -31,7 +31,7 @@ if __name__ == "__main__":
                 print("Here it is decrypted with your private key.")
             
             elif choice == '2':
-                message = input("\nPlease input your validation number: ") #if it exists in our data and matches the name Grinkle, cont.
+                message = input("\nPlease input your validation number: ") #if it exists in our data and matches the name Gimp, cont.
                 #check if they have voted before. if so then accuse them of treason and break. 
                 print("Please input your vote. Type 1 for Mr. Goblin, or 2 for Gert.")
                 choice = input("Vote: ") 
