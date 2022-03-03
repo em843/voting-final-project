@@ -1,5 +1,5 @@
-MrGoblinCount = 0
-GertCount = 0
+MrGrumbleCount = 0
+MadamGoobCount = 0
 
 if __name__ == "__main__":
     
@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
         if choice == '1':
             
-            print("\nHello, Grinkle. What would you like to do?")
+            print("\nHello, Grimp. What would you like to do?")
             print("------------------------------------------- ")
             print("\t1. Register to vote")
             print("\t2. Cast vote")
@@ -36,9 +36,9 @@ if __name__ == "__main__":
                 print("Please input your vote. Type 1 for Mr. Goblin, or 2 for Gert.")
                 choice = input("Vote: ") 
                 if choice == '1':
-                    MrGoblinCount += 1 
+                    MrGrumbleCount += 1 
                 elif choice == '2':
-                    GertCount += 1
+                    MadamGoobCount += 1
                 else:
                      print("Error, unknown option {}.".format(choice))
 
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
 
         elif choice == '3': #user3
-            print("\nHello, Goob. What would you like to do?")
+            print("\nHello, Grank. What would you like to do?")
 
 
 
