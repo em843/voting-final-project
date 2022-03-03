@@ -57,7 +57,7 @@ def register(user):
     return 
 
 
-register("grumble")
+register("Grimp")
 
 def check_signature():
     return True
@@ -98,6 +98,6 @@ def get_aes():
 
 
 
-user = "grumble"
+user = "Grimp"
 user_privkey[user]
 
