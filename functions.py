@@ -25,7 +25,15 @@ def simple_rsa_encrypt(x, e, n):
 def simple_rsa_decrypt(y, d, n):
     return gmpy2.powmod(y, d, n)
 
+def check_signature():
+    return True
 
+
+def get_validation():
+    return 12345
+
+def get_aes():
+    return 1234567890
 
 """
 Register to vote
@@ -54,15 +62,7 @@ def register(user):
 
 register("Grimp")
 
-def check_signature():
-    return True
 
-
-def get_validation():
-    return 12345
-
-def get_aes():
-    return randint()
 
 
 
