@@ -26,7 +26,9 @@ if __name__ == "__main__":
             print("------------------------------------------- ")
             print("\t1. Register to vote")
             print("\t2. Cast vote")
-            print("\t6. Quit \n")
+            print("\t3. Verify vote")
+            print("\t4. Request results")
+            print("\t5. Quit \n")
             choice = input(">> ")
             print()
             
@@ -63,8 +65,28 @@ if __name__ == "__main__":
                 #When it 'gets to the CTA', when the signature is verified, then we will record that they already voted so they cant again. 
                 #we will also need to add their validation number to a list with eveyrone else who voted for that canidate.
                 
+            #Verify vote    
+            elif choice == '3':
+                # need validation id from user. Then CTF decrypts the key using RSA private key
+                validation = input("Please enter your validation number: ")
+                # if validation == True:
+                    # return verification status and voter name
+                # else:
+                    # print("Incorrect validation number.")
+                    
+                break
+            
+            #Request results
+            elif choice == '4':
+                validation = input("Please enter your validation number: ")
+                # if validation == true:
+                    #return results
+                # else:
+                    # print("Incorrect validation number.")
+                break
+            
             # Quit
-            elif choice == '6':
+            elif choice == '5':
                 print("Goodbye, Goblin! \n")
                 break
 
