@@ -17,11 +17,7 @@ import gmpy2
 from cryptography.hazmat.primitives.asymmetric import rsa
 
 
-
-
 my_e = 65537
-
-
 
 def simple_rsa_encrypt(x, e, n):
     return gmpy2.powmod(x, e, n)
@@ -61,11 +57,10 @@ def register(user):
     # Decrypt AES key with user's priv key
     decrypted_aes = simple_rsa_decrypt(encrypted_aes, priv_key[user], public_key[user])
     print(f"Decrypted AES key: {decrypted_aes}")
-    priv_key[user]
     return 
 
 
-register("grumble")
+register("Grimp")
 
 
 
@@ -97,4 +92,7 @@ register("grumble")
     # Then encrypt that with AES key and send to CTF
 
 
+
+user = "Grimp"
+user_privkey[user]
 
