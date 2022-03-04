@@ -1,3 +1,12 @@
+"""
+Authors: Tabitha Rowland, Robin Vogel, Erin Murphy, Vien Hang
+
+
+Main menu where the user will choose what they want to do.
+
+
+"""
+
 MrGrumbleCount = 0
 MadamGoobCount = 0
 
@@ -47,7 +56,7 @@ if __name__ == "__main__":
             elif choice == '2':
                 message = input("\nPlease input your validation number: ") #if it exists in our data and matches the name Gimp, cont.
                 #check if they have voted before. if so then accuse them of treason and break. 
-                print("Please input your vote. Type 1 for Mr. Goblin, or 2 for Gert.")
+                print("Please input your vote. Type 1 for Mr. Grumble, or 2 for Madam Goob.")
                 choice = input("Vote: ") 
                 if choice == '1':
                     MrGrumbleCount += 1 
