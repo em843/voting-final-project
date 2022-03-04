@@ -9,6 +9,8 @@ We create a secret to send them, encrypt it with the public key, and they can de
 
 """
 from data import *
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.asymmetric import rsa
 
 
  # import modules
@@ -38,8 +40,22 @@ from data import *
     # Should be signed (ecnrypt with privatek ey)
     # Then encrypt that with AES key and send to CTF
 
+keys = []
+def generateKeys():
+    for i in range(7):
+        private_key = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=2048,
+        backend=default_backend())
+        keys.append(keys)
+        return keys
 
+def printKeys(keys):
+    for x in keys:
+        private_key_temp = keys(x)
+        print(private_key_temp.private_numbers().d)
 
-user = "Grimp"
-user_privkey[user]
-
+if __name__ == "__main__":
+    coolkeys = generateKeys
+    print(coolkeys.count())
+    # printKeys(coolkeys)
