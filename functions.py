@@ -25,16 +25,19 @@ def simple_rsa_encrypt(x, e, n):
 def simple_rsa_decrypt(y, d, n):
     return gmpy2.powmod(y, d, n)
 
-def check_signature():
-    # TODO: Implement this
-    return True
+def check_signature(x, d, e, n):
+    y = simple_rsa_encrypt(x, d, n)
+    print("Your message has been encrypted")
+    plaintext = simple_rsa_decrypt(y, e, n)
+    if x == plaintext:
+        return True
+    else: 
+        return False
 
 """
 Generates a random validation number for a voter
 """
 def get_validation():
-    # TODO: Implement this
-
     return 12345
 
 def get_aes():
