@@ -13,7 +13,7 @@ class User():
         self.pubkey = pubkey
         self.privkey = privkey
         self.valnum = 0
-        self.aes = 0
+        self.aeskey = 0
     def __str__(self):
         return self.name
 
@@ -32,6 +32,9 @@ gert = User("Gert", 6747512)
 """
 
 
+
+
+# Discarded code
 
 
 # Voters and their public keys
