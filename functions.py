@@ -27,7 +27,7 @@ def simple_rsa_decrypt(y, d, n):
 
 def check_signature(x, d, e, n):
     y = simple_rsa_encrypt(x, d, n)
-    print("Your message has been encrypted")
+    print("Your message has been signed")
     plaintext = simple_rsa_decrypt(y, e, n)
     if x == plaintext:
         return True
@@ -48,30 +48,31 @@ def get_aes():
 Register to vote
 """
 def register(user):
-
-    
-    # Check if the user asking for a validation number is authentic (signature)
-    if check_signature(): # if signature is valid CHANGE THIS 
-        my_vn = get_validation()
-        validation_number[user] = my_vn
-
+    print(f"Your public registration number: {user.regnum}")
+    # Check if already registered
+    if user.valnum != 0:
+        print("Already registered.")
+        return
+    # Identity check (checks validity of pub and priv keys)
+    if check_signature(user.regnum, user.privkey, my_e, user.pubkey): 
+        user.valnum = get_validation()
+        print("Voter is eligible. Validation number generated.")
     # Encrypt validation number with user's public key
-    encrypted_vn = simple_rsa_encrypt(my_vn, my_e, public_key[user])
+    encrypted_vn = simple_rsa_encrypt(user.valnum, my_e, user.pubkey)
     print(f"Encrypted validation number: {encrypted_vn}")
     # Encrypt new AES key with user's public key
-    encrypted_aes = simple_rsa_encrypt(get_aes(), my_e, public_key[user])
+    encrypted_aes = simple_rsa_encrypt(get_aes(), my_e, user.pubkey)
     print(f"Encrypted AES key: {encrypted_aes}")
-
     # Decrypt validation number with user's priv key
-    decrypted_vn = simple_rsa_decrypt(encrypted_vn, priv_key[user], public_key[user])
+    decrypted_vn = simple_rsa_decrypt(encrypted_vn, user.privkey, user.pubkey)
     print(f"Decrypted validation number: {decrypted_vn}")
     # Decrypt AES key with user's priv key
-    decrypted_aes = simple_rsa_decrypt(encrypted_aes, priv_key[user], public_key[user])
+    decrypted_aes = simple_rsa_decrypt(encrypted_aes, user.privkey, user.pubkey)
     print(f"Decrypted AES key: {decrypted_aes}")
     return 
 
 
-register("Grimp")
+register(grimp)
 
 
 
@@ -104,6 +105,6 @@ register("Grimp")
 
 
 
-user = "Grimp"
+user = grimp
 #user_privkey[user]
 
