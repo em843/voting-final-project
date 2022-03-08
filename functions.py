@@ -44,9 +44,11 @@ def check_signature(x, d, e, n):
 Generates a random validation number for a voter
 """
 def get_validation():
-    #return random.randint(1000000000, 9999999999)
-    return 12345
+    return random.randint(1000000000, 9999999999)
 
+"""
+Generates a random aes key
+"""
 def get_aes():
     return os.urandom(32)
 
@@ -83,34 +85,5 @@ def register(user):
     print(f"Decrypted AES key: {decrypted_aes}")
     return 
 
-register(grimp)
-
-
-
-
-# List of eligible voters: [user, privateKey, publicKey]
-    # in theory, CLA does not have privateKey
-
-
-# User sends registration number (secret)
-
-# Generate an AES key for a user
-# 
-# Encrypt with user's public key
-
-
-# Eligible voter signs up
-# They have a private key and their public key is known by CLA
-# CLA gets a number for them, encrypts it with their public key and sends to user
-    # also sends an AES key (encrypted with public key)
-
-
-
-
-
-# Votes themselves should be numbers (easiest)
-    # Should be signed (ecnrypt with privatek ey)
-    # Then encrypt that with AES key and send to CTF
-
-#user_privkey[user]
+#register(grimp)
 
