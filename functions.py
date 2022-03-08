@@ -44,7 +44,8 @@ def check_signature(x, d, e, n):
 Generates a random validation number for a voter
 """
 def get_validation():
-    return random.randint(1000000000, 9999999999)
+    #return random.randint(1000000000, 9999999999)
+    return 12345
 
 def get_aes():
     return os.urandom(32)
@@ -111,8 +112,5 @@ register(grimp)
     # Should be signed (ecnrypt with privatek ey)
     # Then encrypt that with AES key and send to CTF
 
-
-
-user = grimp
 #user_privkey[user]
 
