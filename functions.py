@@ -15,16 +15,22 @@ the CTF publishes the outcome.
 from data import *
 import gmpy2
 from cryptography.hazmat.primitives.asymmetric import rsa
+import random
+import os
+import sys
 
-
+# Public e: users all share same e but have different n values
 my_e = 65537
 
+# Encrypts a numerical plaintext with RSA
 def simple_rsa_encrypt(x, e, n):
     return gmpy2.powmod(x, e, n)
 
+# Encrypts a numerical plaintext with RSA
 def simple_rsa_decrypt(y, d, n):
     return gmpy2.powmod(y, d, n)
 
+# Validates a signature
 def check_signature(x, d, e, n):
     y = simple_rsa_encrypt(x, d, n)
     print("Your message has been signed")
@@ -38,30 +44,35 @@ def check_signature(x, d, e, n):
 Generates a random validation number for a voter
 """
 def get_validation():
-    return 12345
+    return random.randint(1000000000, 9999999999)
 
 def get_aes():
-    # TODO: Implement this
-    return 1234567890
+    return os.urandom(32)
 
 """
 Register to vote
 """
 def register(user):
     print(f"Your public registration number: {user.regnum}")
-    # Check if already registered
-    if user.valnum != 0:
-        print("Already registered.")
-        return
     # Identity check (checks validity of pub and priv keys)
     if check_signature(user.regnum, user.privkey, my_e, user.pubkey): 
+        # Check if already registered
+        if user.valnum != 0:
+            print("Already registered.")
+            return
+        # Generate validation number and aes key
         user.valnum = get_validation()
-        print("Voter is eligible. Validation number generated.")
+        user.aeskey = get_aes()
+        print("Identity check passed. Validation number generated.")
+    else:
+        print("Identity check failed. Voter ineligible.")
+        return
     # Encrypt validation number with user's public key
     encrypted_vn = simple_rsa_encrypt(user.valnum, my_e, user.pubkey)
     print(f"Encrypted validation number: {encrypted_vn}")
     # Encrypt new AES key with user's public key
-    encrypted_aes = simple_rsa_encrypt(get_aes(), my_e, user.pubkey)
+    aesint = int.from_bytes(user.aeskey, sys.byteorder) # convert aeskey bytes to int
+    encrypted_aes = simple_rsa_encrypt(aesint, my_e, user.pubkey)
     print(f"Encrypted AES key: {encrypted_aes}")
     # Decrypt validation number with user's priv key
     decrypted_vn = simple_rsa_decrypt(encrypted_vn, user.privkey, user.pubkey)
@@ -71,10 +82,7 @@ def register(user):
     print(f"Decrypted AES key: {decrypted_aes}")
     return 
 
-
 register(grimp)
-
-
 
 
 
