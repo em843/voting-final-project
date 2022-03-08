@@ -26,19 +26,27 @@ def simple_rsa_decrypt(y, d, n):
     return gmpy2.powmod(y, d, n)
 
 def check_signature():
+    # TODO: Implement this
     return True
 
-
+"""
+Generates a random validation number for a voter
+"""
 def get_validation():
+    # TODO: Implement this
+
     return 12345
 
 def get_aes():
+    # TODO: Implement this
     return 1234567890
 
 """
 Register to vote
 """
 def register(user):
+
+    
     # Check if the user asking for a validation number is authentic (signature)
     if check_signature(): # if signature is valid CHANGE THIS 
         my_vn = get_validation()
@@ -94,5 +102,5 @@ register("Grimp")
 
 
 user = "Grimp"
-user_privkey[user]
+#user_privkey[user]
 
