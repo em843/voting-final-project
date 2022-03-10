@@ -58,6 +58,18 @@ if __name__ == "__main__":
         print("expected: ", expected)
 
 
+        #things ive tried already to get rid of the b ' 
+        #new_recovered = recoveredtexts.decode('utf-8')
+
+        #new_recovered = {x.replace("b'", '').replace("'"", '') for x in recoveredtexts}
+
+        # for s in recoveredtexts: #strip whitespaces except space!
+        #         new_recovered = recoveredtexts.replace("[", b'')
+
+
+        
+        #print("new recovered: ", new_recovered)
+
         if expected == recoveredtexts:
                 print("[PASS]")
         else:
