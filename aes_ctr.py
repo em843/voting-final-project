@@ -1,11 +1,16 @@
+from typing_extensions import Self
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 import os
 
 class EncryptionManager:
-    def __init__(self):
-        key = os.urandom(32)
+    def __init__(self, key):
+        #key = os.urandom(32)
         nonce = os.urandom(16)
+        # if (key == bytes):
+        #     key = key
+        # else:
+        #     key = int_to_bytes(key)
         aes_context = Cipher(algorithms.AES(key),
                             modes.CTR(nonce),
                             backend=default_backend())
@@ -24,44 +29,52 @@ class EncryptionManager:
     def finalizeDecryptor(self):
         return self.decryptor.finalize()
 
-# Auto generate key/IV for encryption
-manager = EncryptionManager()
+def int_to_bytes(i):
+    i = int(i)
+    return i.to_bytes(32, byteorder='big')
 
-plaintexts = [
-    b"SHORT",
-    b"MEDIUM MEDIUM MEDIUM",
-    b"LONG LONG LONG LONG LONG LONG"
-]
+key = 12345678901234567890123456789012
+key = int_to_bytes(key)
 
-ciphertexts = []
+# #key = key.to_bytes(32, 'big') #if it doesnt work, change it to 'little'
+# # Auto generate key/IV for encryption
+# manager = EncryptionManager(key)
 
-for m in plaintexts:
-    ciphertexts.append(manager.updateEncryptor(m))
-ciphertexts.append(manager.finalizeEncryptor())
+# plaintexts = [
+#     b"SHORT",
+#     b"MEDIUM MEDIUM MEDIUM",
+#     b"LONG LONG LONG LONG LONG LONG"
+# ]
 
-for c in ciphertexts:
-    print("Recovered", manager.updateDecryptor(c))
-print("Recovered", manager.finalizeDecryptor())
+# ciphertexts = []
+
+
+# for m in plaintexts:
+#     manager.__init__(Self)
+#     ciphertexts.append(manager.updateEncryptor(m))
+# ciphertexts.append(manager.finalizeEncryptor())
+
+# for c in ciphertexts:
+#     print("Recovered", manager.updateDecryptor(c))
+# print("Recovered", manager.finalizeDecryptor())
 
 # Start Auto Test
-manager = EncryptionManager()
+manager = EncryptionManager(key)
+plaintexts = [b"validationNumber and signature",]
 ciphertexts = []
 recoveredtexts = []
-expected = [
-    b'SHORT',
-    b'MEDIUM MEDIUM MEDIUM',
-    b'LONG LONG LONG LONG LONG LONG',
-    b'',
-    b'',
-    ]
+expected = [b"validationNumber and signature",]
     
+print("plaintexts: ", plaintexts)
 for m in plaintexts:
     ciphertexts.append(manager.updateEncryptor(m))
 ciphertexts.append(manager.finalizeEncryptor())
+print("ciphertexts: ", ciphertexts)
 
 for c in ciphertexts:
     recoveredtexts.append(manager.updateDecryptor(c))
 recoveredtexts.append(manager.finalizeDecryptor())
+print("recovered: ", recoveredtexts)
 
 if expected == recoveredtexts:
     print("[PASS]")
@@ -70,3 +83,6 @@ else:
         if r_text!=x_text:
             print("Mismatch",r_text,x_text)
     print("[FAIL]")
+
+message = b"validationNumber and signature"
+key = 12345678901234567890123456789012
