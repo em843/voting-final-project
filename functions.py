@@ -67,7 +67,7 @@ user: the user to be registered
 simplified: if the statements are to be printed
 """
 def register(user, simplified):
-    print(f"Hello, {user.name}.")
+    print(f"\nHello, {user.name}.")
     print(f"Your public registration number: {user.regnum}")
     # Identity check (checks validity of pub and priv keys)
     if check_signature(user.regnum, user.privkey, my_e, user.pubkey): 
