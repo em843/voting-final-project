@@ -6,10 +6,14 @@ Main menu where the user will choose what they want to do.
 
 
 """
+from array import array
+from unittest import result
+from data import *
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.asymmetric import rsa
+from functions import *
 
 if __name__ == "__main__":
-    
-    
 
     while True: 
         print("\nWelcome to the Goblin Voting System!")
@@ -33,46 +37,43 @@ if __name__ == "__main__":
             print("------------------------------------------- ")
             print("\t1. Register to vote.")
             print("\t2. Cast vote.")
-            print("\t3. Verify vote.")
-            print("\t4. Request results.")
-            print("\t5. Quit \n")
+            print("\t3. Request results.")
+            print("\t4. Quit \n")
             choice = input(">> ")
             print()
             
             # Register to vote
             if choice == '1':
-                print("Here is your signature number:")
-                print("Your signature number has been verified!")
-                print("Here is your encrypted AES key:")
-                print("Here is your decrypted AES key:")
+                register(grimp)
+                print("Your signature number has been verified.")
+                print("Your encrypted AES key has been generated.")
+                print("Your decrypted AES key has been generated.")
                 print("Your validation number has been generated, thank you for registering!")
+                continue
                 
             # Cast vote
             elif choice == '2':
-                print("Here is your signature number:")
                 print("Your signature number has been verified!")
-                print("Here is your encrypted AES message:")
-                print("Here is your decrypted AES message:")
-                # Vote
-                print("Please input your vote. Type 1 for Mr. Grumble or 2 for Madam Goob.")
-                choice = input("Vote: ") 
-                print("Your vote has been casted, thank you for voting!")
+                print("Your encrypted AES message has been generated.")
+                print("Your decrypted AES message has been generated.")
                 
-            # Verify vote    
+                # Vote
+                vote()
+                print("Your vote has been casted, thank you for voting!")
+                continue
+
             elif choice == '3':
-                print("Here is your validation number:")
-                print("Here is your signature number:")
-                print("Here is your encrypted AES message:")
-                print("Here is your vote:")
-            
-            # Request results
-            elif choice == '4':
-                print("Here is the overall voting results:")
+                finishVoting()
+                print("All votes have been casted.")
+                print("Our winner is...")
+                tallyVotes()
+                print("Thank you for voting in the Goblin Election!")
+                continue
                 
             # Quit
-            elif choice == '5':
-                print("Goodbye, Goblin! \n")
-                break
+            elif choice == '4':
+                print("Returning to main menu... \n")
+                continue
 
             else: 
                 print("Error, unknown option {}.".format(choice))
