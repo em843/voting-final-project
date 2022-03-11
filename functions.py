@@ -67,7 +67,7 @@ user: the user to be registered
 simplified: if the statements are to be printed
 """
 def register(user, simplified):
-    print(f"Hello, {user.name}.")
+    print(f"\nHello, {user.name}.")
     print(f"Your public registration number: {user.regnum}")
     # Identity check (checks validity of pub and priv keys)
     if check_signature(user.regnum, user.privkey, my_e, user.pubkey): 
@@ -93,10 +93,10 @@ def register(user, simplified):
     decrypted_aes = simple_rsa_decrypt(encrypted_aes, user.privkey, user.pubkey)
 
     if simplified == False:
-        print(f"Encrypted validation number: {encrypted_vn}")
-        print(f"Encrypted AES key: {encrypted_aes}")
-        print(f"Decrypted validation number: {decrypted_vn}")
-        print(f"Decrypted AES key: {decrypted_aes}")
+        print(f"Encrypted validation number: {encrypted_vn}\n")
+        print(f"Encrypted AES key: {encrypted_aes}\n")
+        print(f"Decrypted validation number: {decrypted_vn}\n")
+        print(f"Decrypted AES key: {decrypted_aes}\n")
     return 
 
 
@@ -137,11 +137,9 @@ def tallyVotes():
         if user.vote == 2:
             madaam_goob_count += 1
     if mister_grumble_count > madaam_goob_count:
-        print(f"MISTER GRUMBLE wins with {mister_grumble_count} votes.\n")
-        return 
+        return "MISTER GRUMBlE, with {mister_grumble_count} votes!\n"
     if mister_grumble_count < madaam_goob_count:
-        print(f"MADAM GOOB wins with {madaam_goob_count} votes.\n")
-        return 
+        return "MADAM GOOB, with {madaam_goob_count} votes!\n"
 
 # register(grimp, False)
 # register(grilbo, False)
