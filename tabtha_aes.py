@@ -1,3 +1,4 @@
+from re import I
 from typing_extensions import Self
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
@@ -35,7 +36,7 @@ def allAES(message, key):
         plaintexts = [message]
         ciphertexts = []
         recoveredtexts = []
-        expected = [message, b'', b''] #when it passes through the updateEncryptor or updateDecryptor, an empty byte sstring b' ' gets added. dont know how to avoid this.
+        finalrecoveredtexts = []
         
         print("plaintexts: ", plaintexts)
         for m in plaintexts:
@@ -48,7 +49,16 @@ def allAES(message, key):
         recoveredtexts.append(manager.finalizeDecryptor())
 
         print("recovered: ", recoveredtexts)
-        print("expected: ", expected)
+        
+        for i in recoveredtexts:
+            newi = i.decode()
+            finalrecoveredtexts.append(newi)
+        finalrecoveredtext = finalrecoveredtexts[0]
+
+        print("finalrecoveredtext: ", finalrecoveredtext)
+
+        return finalrecoveredtext
+        
 
 
 if __name__ == "__main__":
@@ -59,7 +69,7 @@ if __name__ == "__main__":
 
         allAES(message, key)
 
-
+        # key = int_to_bytes(key)
         # manager = EncryptionManager(key)
         # plaintexts = [message]
         # ciphertexts = []
@@ -79,18 +89,15 @@ if __name__ == "__main__":
         # print("recovered: ", recoveredtexts)
         # print("expected: ", expected)
 
+        # finalrecoveredtexts = []
 
-        #things ive tried already to get rid of the b ' 
-        #new_recovered = recoveredtexts.decode('utf-8')
+        # for i in recoveredtexts:
+        #     newi = i.decode()
+        #     finalrecoveredtexts.append(newi)
+        # finalrecoveredtext = finalrecoveredtexts[0]
 
-        #new_recovered = {x.replace("b'", '').replace("'"", '') for x in recoveredtexts}
-
-        # for s in recoveredtexts: #strip 
-        #         new_recovered = recoveredtexts.replace("[", b'')
-
-
-        
-        #print("new recovered: ", new_recovered)
+        # print("finalrecoveredtext: ", finalrecoveredtext)
+       
 
         # if expected == recoveredtexts:
         #         print("[PASS]")
