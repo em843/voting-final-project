@@ -235,6 +235,8 @@ if __name__ == "__main__":
                      print(result)
 
                      print("Thank you for voting in the Goblin Election.")
+                     print("To run another election please restart te program.")
+                     break
                   
 
                elif choice == '9':
