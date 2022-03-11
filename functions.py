@@ -100,4 +100,4 @@ def finishRegistration():
 
 # Encrypt each item in ctfValnum with the CTF pub key and send it to CTF
     for v in ctfValnum:
-        
+        v = 1 #TODO: encrypt v
