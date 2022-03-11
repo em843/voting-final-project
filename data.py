@@ -13,7 +13,7 @@ class User():
         self.privkey = privkey
         self.valnum = 0
         self.aeskey = 0
-        self.vote = None
+        self.vote = 0
     def __str__(self):
         return self.name
 
