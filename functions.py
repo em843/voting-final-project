@@ -212,12 +212,12 @@ def checkValnum(valnum, val_list):
 
 
 
-register(grimp, False)
+# register(grimp, False)
 
-finishRegistration()
+# finishRegistration()
 
-verify_vote(grimp, vote(grimp))
-# TODO implement simplified for voting functions
+# verify_vote(grimp, vote(grimp))
+# # TODO implement simplified for voting functions
 
-finishVoting()
-tallyVotes()
+# finishVoting()
+# tallyVotes()
