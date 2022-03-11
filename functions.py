@@ -117,10 +117,27 @@ def finishRegistration():
         ctfValnum_encrypted.append(simple_rsa_encrypt(v, my_e, ctf_n))
     return 
 
+def finishVoting():
+    voter_count = 0
+# Votes for all users who haven't voted
+    for user in user_master_list:
+        if user.vote == 0:
+            user.vote = random.randint(1, 2)
+            voter_count += 1
+    print(f"{voter_count} users voted for")
 
-
-
-
+def tallyVotes():
+    mister_grumble_count = 0
+    madaam_goob_count = 0
+    for user in user_master_list:
+        if user.vote == 1:
+            mister_grumble_count += 1
+        if user.vote == 2:
+            madaam_goob_count += 1
+    if mister_grumble_count < madaam_goob_count:
+        return "MISTER GRUMBLE"
+    if mister_grumble_count > madaam_goob_count:
+        return "MADAAM GOOB"
 
 # register(grimp, False)
 # register(grilbo, False)
