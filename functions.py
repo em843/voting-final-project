@@ -137,9 +137,9 @@ def tallyVotes():
         if user.vote == 2:
             madaam_goob_count += 1
     if mister_grumble_count > madaam_goob_count:
-        return "MISTER GRUMBlE, with {mister_grumble_count} votes!\n"
+        return f"MISTER GRUMBlE, with {mister_grumble_count} votes!\n"
     if mister_grumble_count < madaam_goob_count:
-        return "MADAM GOOB, with {madaam_goob_count} votes!\n"
+        return f"MADAM GOOB, with {madaam_goob_count} votes!\n"
 
 # register(grimp, False)
 # register(grilbo, False)
