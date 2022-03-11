@@ -29,34 +29,6 @@ def int_to_bytes(i):
     return i.to_bytes(32, byteorder='big')
 
 #uses all of the above functions & class
-def encryptAES(message, key): #prints out plaintext message, and ciphertext message
-    key = int_to_bytes(key)
-    manager = EncryptionManager(key)
-    plaintexts = [message]
-    ciphertexts = []
-        
-    print("plaintexts: ", plaintexts)
-    for m in plaintexts:
-            ciphertexts.append(manager.updateEncryptor(m))
-    ciphertexts.append(manager.finalizeEncryptor())
-    print("ciphertexts: ", ciphertexts)
-
-    return ciphertexts
-
-def decryptAES(ciphertexts, key):
-    key = int_to_bytes(key)
-    manager = EncryptionManager(key)
-    recoveredtexts = []
-    #expected = [message, b'', b''] #when it passes through the updateEncryptor or updateDecryptor, an empty byte sstring b' ' gets added. dont know how to avoid this.
-    #add message as a parameter or hardcode it in if you want to use this to check
-    
-
-    for c in ciphertexts:
-            recoveredtexts.append(manager.updateDecryptor(c))
-    recoveredtexts.append(manager.finalizeDecryptor())
-    print("recovered: ", recoveredtexts)
-
-
 def allAES(message, key):
         key = int_to_bytes(key)
         manager = EncryptionManager(key)
@@ -84,10 +56,6 @@ if __name__ == "__main__":
         # #variables for the test
         message = b"validationNumber and signature"
         key = 12345678901234567890123456789012
-
-        encryptAES(message, key)
-        ciphertexts = encryptAES(message, key)
-        decryptAES(ciphertexts, key)
 
         allAES(message, key)
 
