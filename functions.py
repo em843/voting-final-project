@@ -18,7 +18,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 import random
 import os
 import sys
-from ctf import ctf_n
+from tabtha_aes import *
 
 # Public e: users all share same e but have different n values
 my_e = 65537
@@ -53,7 +53,7 @@ def get_validation():
 Generates a random aes key
 """
 def get_aes():
-    return os.urandom(32)
+    return random.randint(10000000000000000000000000000000, 99999999999999999999999999999999)
 
 """
 Register to vote
@@ -81,8 +81,7 @@ def register(user, simplified):
     # Encrypt validation number with user's public key
     encrypted_vn = simple_rsa_encrypt(user.valnum, my_e, user.pubkey)
     # Encrypt new AES key with user's public key
-    aesint = int.from_bytes(user.aeskey, sys.byteorder) # convert aeskey bytes to int
-    encrypted_aes = simple_rsa_encrypt(aesint, my_e, user.pubkey)
+    encrypted_aes = simple_rsa_encrypt(user.aeskey, my_e, user.pubkey)
     # Decrypt validation number with user's priv key
     decrypted_vn = simple_rsa_decrypt(encrypted_vn, user.privkey, user.pubkey)
     # Decrypt AES key with user's priv key
@@ -109,13 +108,12 @@ def finishRegistration():
             register(user, True)
             register_count+=1
     print(f"{register_count} users registered.")
-
 # Encrypt each item in ctfValnum with the CTF pub key and send it to CTF
     ctfValnum_encrypted = []
     for v in ctfValnum:
         # Add encrypted valnum to list to send to CTF
         ctfValnum_encrypted.append(simple_rsa_encrypt(v, my_e, ctf_n))
-    return 
+    return ctfValnum_encrypted
 
 def finishVoting():
     voter_count = 0
@@ -142,3 +140,69 @@ def tallyVotes():
 # register(grimp, False)
 # register(grilbo, False)
 # finishRegistration()
+
+
+
+
+"""
+
+The CTF
+
+"""
+
+
+ctf_n = 22675032247964811304377741010681025768705689936049346485778680101377361780419412229892976744577715670202551587179341582317473747052372556076228084822612474800300574464210447554115735854080872047541104271586491991401193940884347823153371229107896688630096412115433919576692709742447574583916548666951113372331515816131683709597784512003051684059499878771165735333514033053258875472338691622523281267529622600174783673495821291605920651313776635795635900964473267552884315741153907681424973048913859674207556856534666416913160161946874226983650166899194349986981105539303324539741705807370244360701173598058846718087297
+ctf_d = 5603625773044815659638095936783647303812462489956134941844629795717041539827468460188086902897305079490982582448946644906141642236602620171972932264019281350468713917670207799967323159325172096403187890544498898221367121878677652986740321141210228863894311467134103811039796252325875733724650536489925266311798705229715550565137462987172371523727795446266333911997133994937800842662295597364395146595455382713122181908007116609168400495194310792084942243492003737801279279005363735843788853944718629196270074246264378176086291389509478648601161128087639912520342768368147135338477713666218082468362583131627181393601
+
+
+# Decrypt the valnums 
+
+# Obtain vote + valnum from voter (encrypted with AES and signed with RSA)
+
+
+
+
+"""
+Asks the user for a vote, then signs and encrypts it
+"""
+def vote(user):
+    vote = input("Enter the number of the candidate you want to vote for: \n1. Mr. Grumble \n2. Madam Goob\n")
+    while vote != "1" and vote != "2":
+        print(f"Please enter a number, either 1 or 2.")
+        vote = input("Enter the number of the candidate you want to vote for: \n1. Mr. Grumble \n2. Madam Goob\n")
+    # Combine valnum and vote as a string (prevents attaching vote to someone else's valnum)
+    combined_x = str(vote) + str(user.valnum)
+    print(f"Combined vote and valnum: {combined_x}")
+    # Sign vote + valnum with RSA
+    signed_x = simple_rsa_encrypt(int(combined_x), user.privkey, user.pubkey)
+    # Encrypt vote with user's aes key
+    #signed_x_bytes = "b'" + str(signed_x) + "'"
+    signed_x_bytes = str(signed_x).encode()
+    print(f"Signed message: {signed_x_bytes}\n")
+    print(f"Type should be bytes: {type(signed_x_bytes)}\n")
+    encrypted_x = allAES(signed_x_bytes, user.aeskey)
+    print(f"Encrypted + signed vote + valnum: {encrypted_x}\n")
+    return int(encrypted_x) # Make encrypted vote into an int
+
+
+"""
+Decrypt 
+"""
+def verify_vote(user, encrypted_vote):
+    # Decrypt with AES
+    vote_bytestring = str(encrypted_vote).encode()
+    decrypted_x = allAES(vote_bytestring, user.aeskey) 
+    # Unsign message
+    unsigned_x = simple_rsa_decrypt(int(decrypted_x), my_e, user.pubkey)
+    print(f"Unsigned vote + valnum: {unsigned_x}")
+    # If user valnum is in the list, then vote is valid
+    
+        # 
+
+
+finishRegistration()
+
+
+encrypted_vote_valnum = vote(grimp)
+
+verify_vote(grimp, encrypted_vote_valnum)
