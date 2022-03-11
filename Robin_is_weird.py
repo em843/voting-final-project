@@ -37,33 +37,88 @@ if __name__ == "__main__":
          if choice == '1':
                
                register(grimp)
-               continue
+               print("\t1. Return.")
+               choice = input(">> ")
+               print()
+
+               if choice == '1':
+                     break
+               else: 
+                     print("Error, unknown option {}.".format(choice))
          
-         if choice == '2':
+         elif choice == '2':
                
                register(gumpy)
+               print("\t1. Return.")
+               choice = input(">> ")
+               print()
+
+               if choice == '1':
+                     break
+               else: 
+                     print("Error, unknown option {}.".format(choice))
          
-         if choice == '3':
+         elif choice == '3':
                
                register(grimble)
+               print("\t1. Return.")
+               choice = input(">> ")
+               print()
+
+               if choice == '1':
+                     break
+               else: 
+                     print("Error, unknown option {}.".format(choice))
          
-         if choice == '4':
+         elif choice == '4':
                
                register(gronk)
+               print("\t1. Return.")
+               choice = input(">> ")
+               print()
+
+               if choice == '1':
+                     break
+               else: 
+                     print("Error, unknown option {}.".format(choice))
          
-         if choice == '5':
+         elif choice == '5':
                
                register(grilbo)
+               print("\t1. Return.")
+               choice = input(">> ")
+               print()
+
+               if choice == '1':
+                     break
+               else: 
+                     print("Error, unknown option {}.".format(choice))
          
-         if choice == '6':
+         elif choice == '6':
                
                register(garth)
+               print("\t1. Return.")
+               choice = input(">> ")
+               print()
+
+               if choice == '1':
+                     break
+               else: 
+                     print("Error, unknown option {}.".format(choice))
          
-         if choice == '7':
+         elif choice == '7':
                
                register(gert)
+               print("\t1. Return.")
+               choice = input(">> ")
+               print()
+
+               if choice == '1':
+                     break
+               else: 
+                     print("Error, unknown option {}.".format(choice))
          
-         if choice == '8':
+         elif choice == '8':
 
                finishRegistration()
                print("\nAll other goblins selected have been automatically registered to vote")
@@ -85,37 +140,72 @@ if __name__ == "__main__":
                      print("\nHello, Grimp.")
                      vote(grimp)
 
-               if choice == '2':
+                     if choice == '1':
+                        break
+                     else: 
+                        print("Error, unknown option {}.".format(choice))
+
+               elif choice == '2':
                
                      print("\nHello, Gumpy.")
                      vote(gumpy)
 
-               if choice == '3':
+                     if choice == '1':
+                        break
+                     else: 
+                        print("Error, unknown option {}.".format(choice))
+
+               elif choice == '3':
                
                      print("\nHello, Grimble.")
                      vote(grimble)
-         
-               if choice == '4':
+
+                     if choice == '1':
+                        break
+                     else: 
+                        print("Error, unknown option {}.".format(choice))
+
+               elif choice == '4':
                
                      print("\nHello, Gronk.")
                      vote(gronk)
+
+                     if choice == '1':
+                        break
+                     else: 
+                        print("Error, unknown option {}.".format(choice))
          
-               if choice == '5':
+               elif choice == '5':
             
                      print("\nHello, Grilbo.")
                      vote(grilbo)
+
+                     if choice == '1':
+                        break
+                     else: 
+                        print("Error, unknown option {}.".format(choice))
          
-               if choice == '6':
+               elif choice == '6':
                
                      print("\nHello, Garth.")
                      vote(garth)
+
+                     if choice == '1':
+                         break
+                     else: 
+                        print("Error, unknown option {}.".format(choice))
          
-               if choice == '7':
+               elif choice == '7':
                
                      print("\nHello, Gert.")
                      vote(gert)
 
-               if choice == '8':
+                     if choice == '1':
+                        break
+                     else: 
+                        print("Error, unknown option {}.".format(choice))
+
+               elif choice == '8':
                
                      finishVoting()
                      print("\nTallying up the Goblins results.")
@@ -127,14 +217,14 @@ if __name__ == "__main__":
                      print("Thank you for voting in the Goblin Election.")
                   
 
-               if choice == '9':
-                  print("Goodbye, Goblin! \n")
+               elif choice == '9':
+                  print("Returning to Registration\n")
                   break
                
                else: 
                      print("Error, unknown option {}.".format(choice))
 
-         if choice == '9':
+         elif choice == '9':
             print("Goodbye, Goblin! \n")
             break
          
