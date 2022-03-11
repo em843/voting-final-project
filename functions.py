@@ -21,6 +21,8 @@ import sys
 
 # Public e: users all share same e but have different n values
 my_e = 65537
+# CLA's list of validation numbers (to be encrypted and sent to CTF)
+ctfValnum = []
 
 # Encrypts a numerical plaintext with RSA
 def simple_rsa_encrypt(x, e, n):
@@ -65,6 +67,7 @@ def register(user):
             return
         # Generate validation number and aes key
         user.valnum = get_validation()
+        ctfValnum.append(user.valnum)
         user.aeskey = get_aes()
         print("Identity check passed. Validation number generated.")
     else:
@@ -87,3 +90,14 @@ def register(user):
 
 #register(grimp)
 
+"""
+This function finishes the registration step by registering all the 
+unregistered users and finally sending the encrypted validation numbers
+to CTF.
+"""
+def finishRegistration():
+
+
+# Encrypt each item in ctfValnum with the CTF pub key and send it to CTF
+    for v in ctfValnum:
+        
