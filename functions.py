@@ -109,13 +109,12 @@ def finishRegistration():
             register(user, True)
             register_count+=1
     print(f"{register_count} users registered.")
-
 # Encrypt each item in ctfValnum with the CTF pub key and send it to CTF
     ctfValnum_encrypted = []
     for v in ctfValnum:
         # Add encrypted valnum to list to send to CTF
         ctfValnum_encrypted.append(simple_rsa_encrypt(v, my_e, ctf_n))
-    return 
+    return ctfValnum_encrypted
 
 
 
