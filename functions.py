@@ -57,8 +57,11 @@ def get_aes():
 
 """
 Register to vote
+Params:
+user: the user to be registered
+simplified: if the statements are to be printed
 """
-def register(user):
+def register(user, simplified):
     print(f"Hello, {user.name}.")
     print(f"Your public registration number: {user.regnum}")
     # Identity check (checks validity of pub and priv keys)
@@ -77,20 +80,21 @@ def register(user):
         return
     # Encrypt validation number with user's public key
     encrypted_vn = simple_rsa_encrypt(user.valnum, my_e, user.pubkey)
-    print(f"Encrypted validation number: {encrypted_vn}")
     # Encrypt new AES key with user's public key
     aesint = int.from_bytes(user.aeskey, sys.byteorder) # convert aeskey bytes to int
     encrypted_aes = simple_rsa_encrypt(aesint, my_e, user.pubkey)
-    print(f"Encrypted AES key: {encrypted_aes}")
     # Decrypt validation number with user's priv key
     decrypted_vn = simple_rsa_decrypt(encrypted_vn, user.privkey, user.pubkey)
-    print(f"Decrypted validation number: {decrypted_vn}")
     # Decrypt AES key with user's priv key
     decrypted_aes = simple_rsa_decrypt(encrypted_aes, user.privkey, user.pubkey)
-    print(f"Decrypted AES key: {decrypted_aes}")
+
+    if simplified == False:
+        print(f"Encrypted validation number: {encrypted_vn}")
+        print(f"Encrypted AES key: {encrypted_aes}")
+        print(f"Decrypted validation number: {decrypted_vn}")
+        print(f"Decrypted AES key: {decrypted_aes}")
     return 
 
-#register(grimp)
 
 """
 This function finishes the registration step by registering all the 
@@ -98,16 +102,43 @@ unregistered users and finally sending the encrypted validation numbers
 to CTF.
 """
 def finishRegistration():
+    register_count = 0
 # Register all unregistered users
     for user in user_master_list:
         if user.valnum == 0:
-            register(user)
+            register(user, True)
+            register_count+=1
+    print(f"{register_count} users registered.")
 
 # Encrypt each item in ctfValnum with the CTF pub key and send it to CTF
     ctfValnum_encrypted = []
     for v in ctfValnum:
         # Add encrypted valnum to list to send to CTF
         ctfValnum_encrypted.append(simple_rsa_encrypt(v, my_e, ctf_n))
-    
+    return 
 
-finishRegistration()
+def finishVoting():
+    voter_count = 0
+# Votes for all users who haven't voted
+    for user in user_master_list:
+        if user.vote == 0:
+            user.vote = random.randint(1, 2)
+            voter_count += 1
+    print(f"{voter_count} users voted for")
+
+def tallyVotes():
+    mister_grumble_count = 0
+    madaam_goob_count = 0
+    for user in user_master_list:
+        if user.vote == 1:
+            mister_grumble_count += 1
+        if user.vote == 2:
+            madaam_goob_count += 1
+    if mister_grumble_count < madaam_goob_count:
+        return "MISTER GRUMBLE"
+    if mister_grumble_count > madaam_goob_count:
+        return "MADAAM GOOB"
+
+# register(grimp, False)
+# register(grilbo, False)
+# finishRegistration()
