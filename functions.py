@@ -18,6 +18,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 import random
 import os
 import sys
+from ctf import ctf_n
 
 # Public e: users all share same e but have different n values
 my_e = 65537
@@ -58,6 +59,7 @@ def get_aes():
 Register to vote
 """
 def register(user):
+    print(f"Hello, {user.name}.")
     print(f"Your public registration number: {user.regnum}")
     # Identity check (checks validity of pub and priv keys)
     if check_signature(user.regnum, user.privkey, my_e, user.pubkey): 
@@ -96,8 +98,16 @@ unregistered users and finally sending the encrypted validation numbers
 to CTF.
 """
 def finishRegistration():
-
+# Register all unregistered users
+    for user in user_master_list:
+        if user.valnum == 0:
+            register(user)
 
 # Encrypt each item in ctfValnum with the CTF pub key and send it to CTF
+    ctfValnum_encrypted = []
     for v in ctfValnum:
-        v = 1 #TODO: encrypt v
+        # Add encrypted valnum to list to send to CTF
+        ctfValnum_encrypted.append(simple_rsa_encrypt(v, my_e, ctf_n))
+    
+
+finishRegistration()
