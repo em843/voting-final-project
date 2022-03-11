@@ -39,24 +39,24 @@ def allAES(message, key):
         recoveredtexts = []
         finalrecoveredtexts = []
         
-        print("plaintexts: ", plaintexts)
+        #print("plaintexts: ", plaintexts)
         for m in plaintexts:
                 ciphertexts.append(manager.updateEncryptor(m))
         ciphertexts.append(manager.finalizeEncryptor())
-        print("ciphertexts: ", ciphertexts)
+        #print("ciphertexts: ", ciphertexts)
 
         for c in ciphertexts:
                 recoveredtexts.append(manager.updateDecryptor(c))
         recoveredtexts.append(manager.finalizeDecryptor())
 
-        print("recovered: ", recoveredtexts)
+        #print("recovered: ", recoveredtexts)
         
         for i in recoveredtexts:
             newi = i.decode()
             finalrecoveredtexts.append(newi)
         finalrecoveredtext = finalrecoveredtexts[0]
 
-        print("finalrecoveredtext: ", finalrecoveredtext)
+        #print("finalrecoveredtext: ", finalrecoveredtext)
 
         return finalrecoveredtext
         
