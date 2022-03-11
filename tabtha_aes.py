@@ -1,5 +1,5 @@
 from re import I
-from typing_extensions import Self
+#from typing_extensions import Self
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 import os
@@ -31,7 +31,8 @@ def int_to_bytes(i):
 
 #uses all of the above functions & class
 def allAES(message, key):
-        key = int_to_bytes(key)
+        if type(key) is not bytes:
+            key = int_to_bytes(key)
         manager = EncryptionManager(key)
         plaintexts = [message]
         ciphertexts = []

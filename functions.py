@@ -53,7 +53,7 @@ def get_validation():
 Generates a random aes key
 """
 def get_aes():
-    return os.urandom(32)
+    return random.randint(10000000000000000000000000000000, 99999999999999999999999999999999)
 
 """
 Register to vote
@@ -81,8 +81,7 @@ def register(user, simplified):
     # Encrypt validation number with user's public key
     encrypted_vn = simple_rsa_encrypt(user.valnum, my_e, user.pubkey)
     # Encrypt new AES key with user's public key
-    aesint = int.from_bytes(user.aeskey, sys.byteorder) # convert aeskey bytes to int
-    encrypted_aes = simple_rsa_encrypt(aesint, my_e, user.pubkey)
+    encrypted_aes = simple_rsa_encrypt(user.aeskey, my_e, user.pubkey)
     # Decrypt validation number with user's priv key
     decrypted_vn = simple_rsa_decrypt(encrypted_vn, user.privkey, user.pubkey)
     # Decrypt AES key with user's priv key
@@ -177,21 +176,28 @@ def vote(user):
     # Sign vote + valnum with RSA
     signed_x = simple_rsa_encrypt(int(combined_x), user.privkey, user.pubkey)
     # Encrypt vote with user's aes key
-    encrypted_x = signed_x #TODO: make this work
-    return encrypted_x
+    #signed_x_bytes = "b'" + str(signed_x) + "'"
+    signed_x_bytes = str(signed_x).encode()
+    print(f"Signed message: {signed_x_bytes}\n")
+    print(f"Type should be bytes: {type(signed_x_bytes)}\n")
+    encrypted_x = allAES(signed_x_bytes, user.aeskey)
+    print(f"Encrypted + signed vote + valnum: {encrypted_x}\n")
+    return int(encrypted_x) # Make encrypted vote into an int
 
 
 """
-
+Decrypt 
 """
 def verify_vote(user, encrypted_vote):
     # Decrypt with AES
-    decrypted_x = encrypted_vote #TODO: make this decrypt
+    vote_bytestring = str(encrypted_vote).encode()
+    decrypted_x = allAES(vote_bytestring, user.aeskey) 
     # Unsign message
-    unsigned_x = simple_rsa_decrypt(decrypted_x, my_e, user.pubkey)
+    unsigned_x = simple_rsa_decrypt(int(decrypted_x), my_e, user.pubkey)
     print(f"Unsigned vote + valnum: {unsigned_x}")
-
-
+    # If user valnum is in the list, then vote is valid
+    
+        # 
 
 
 finishRegistration()
