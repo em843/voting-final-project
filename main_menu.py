@@ -235,7 +235,7 @@ if __name__ == "__main__":
                      print(result)
 
                      print("Thank you for voting in the Goblin Election.")
-                     print("To run another election please restart te program.")
+                     print("To run another election please restart the program.\n")
                      break
                   
 
@@ -253,3 +253,5 @@ if __name__ == "__main__":
          
          else: 
             print("Error, unknown option {}.".format(choice))
+         break
+      
