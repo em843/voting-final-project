@@ -28,7 +28,7 @@ if __name__ == "__main__":
         print("\t7. Gert.")
         print("\t8. Quit. \n")
         choice = input(">> ")
-        print()
+        
 
         # User 1
         if choice == '1':
@@ -40,16 +40,16 @@ if __name__ == "__main__":
             print("\t3. Request results.")
             print("\t4. Quit \n")
             choice = input(">> ")
-            print()
+            
             
             # Register to vote
             if choice == '1':
-                register(grimp)
+                register(grimp, False)
                 print("Your signature number has been verified.")
                 print("Your encrypted AES key has been generated.")
                 print("Your decrypted AES key has been generated.")
                 print("Your validation number has been generated, thank you for registering!")
-                continue
+                break
                 
             # Cast vote
             elif choice == '2':
@@ -58,25 +58,25 @@ if __name__ == "__main__":
                 print("Your decrypted AES message has been generated.")
                 
                 # Vote
-                vote()
+                vote(grimp)
                 print("Your vote has been casted, thank you for voting!")
-                continue
+                break
 
+            # Request results
             elif choice == '3':
+                print("All votes have been counted.")
                 finishVoting()
-                print("All votes have been casted.")
-                print("Our winner is...")
                 tallyVotes()
                 print("Thank you for voting in the Goblin Election!")
-                continue
+                break
                 
             # Quit
             elif choice == '4':
                 print("Returning to main menu... \n")
-                continue
+                break
 
             else: 
-                print("Error, unknown option {}.".format(choice))
+                print("Error, unknown option{}.".format(choice))
 
 
 
