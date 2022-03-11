@@ -118,7 +118,7 @@ if __name__ == "__main__":
                      print("Error, unknown option {}.".format(choice))
          
          elif choice == '8':
-
+            while True:
                finishRegistration()
                print("\nAll other goblins selected have been automatically registered to vote")
                print("\nWelcome to the Voting section! Choose a goblin to vote")
@@ -238,7 +238,8 @@ if __name__ == "__main__":
                   
 
                elif choice == '9':
-                  print("Goodbye, Goblin!\n")
+                  print("Returning to registering screen\n")
+                  print("In order to fully leave choose quit again\n")
                   break
                
                else: 
