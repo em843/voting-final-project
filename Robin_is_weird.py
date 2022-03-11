@@ -29,14 +29,13 @@ if __name__ == "__main__":
          print("\t5. Grilbo.")
          print("\t6. Garth.")
          print("\t7. Gert.")
-         print("\t8. Vote. \n")
-         print("\t9. Quit. \n")
+         print("\t8. Vote.")
+         print("\t9. Quit.")
          choice = input(">> ")
          print()
 
          if choice == '1':
-               
-               register(grimp)
+               register(grimp, False)
                print("\t1. Return.")
                choice = input(">> ")
                print()
@@ -48,7 +47,7 @@ if __name__ == "__main__":
          
          elif choice == '2':
                
-               register(gumpy)
+               register(gumpy, False)
                print("\t1. Return.")
                choice = input(">> ")
                print()
@@ -60,7 +59,7 @@ if __name__ == "__main__":
          
          elif choice == '3':
                
-               register(grimble)
+               register(grimble, False)
                print("\t1. Return.")
                choice = input(">> ")
                print()
@@ -72,7 +71,7 @@ if __name__ == "__main__":
          
          elif choice == '4':
                
-               register(gronk)
+               register(gronk, False)
                print("\t1. Return.")
                choice = input(">> ")
                print()
@@ -84,7 +83,7 @@ if __name__ == "__main__":
          
          elif choice == '5':
                
-               register(grilbo)
+               register(grilbo, False)
                print("\t1. Return.")
                choice = input(">> ")
                print()
@@ -96,7 +95,7 @@ if __name__ == "__main__":
          
          elif choice == '6':
                
-               register(garth)
+               register(garth, False)
                print("\t1. Return.")
                choice = input(">> ")
                print()
@@ -108,7 +107,7 @@ if __name__ == "__main__":
          
          elif choice == '7':
                
-               register(gert)
+               register(gert, False)
                print("\t1. Return.")
                choice = input(">> ")
                print()
