@@ -41,7 +41,7 @@ if __name__ == "__main__":
                print()
 
                if choice == '1':
-                     break
+                     continue
                else: 
                      print("Error, unknown option {}.".format(choice))
          
@@ -53,7 +53,7 @@ if __name__ == "__main__":
                print()
 
                if choice == '1':
-                     break
+                     continue
                else: 
                      print("Error, unknown option {}.".format(choice))
          
@@ -65,7 +65,7 @@ if __name__ == "__main__":
                print()
 
                if choice == '1':
-                     break
+                     continue
                else: 
                      print("Error, unknown option {}.".format(choice))
          
@@ -77,7 +77,7 @@ if __name__ == "__main__":
                print()
 
                if choice == '1':
-                     break
+                     continue
                else: 
                      print("Error, unknown option {}.".format(choice))
          
@@ -89,7 +89,7 @@ if __name__ == "__main__":
                print()
 
                if choice == '1':
-                     break
+                     continue
                else: 
                      print("Error, unknown option {}.".format(choice))
          
@@ -101,7 +101,7 @@ if __name__ == "__main__":
                print()
 
                if choice == '1':
-                     break
+                     continue
                else: 
                      print("Error, unknown option {}.".format(choice))
          
@@ -113,12 +113,12 @@ if __name__ == "__main__":
                print()
 
                if choice == '1':
-                     break
+                     continue
                else: 
                      print("Error, unknown option {}.".format(choice))
          
          elif choice == '8':
-
+            while True:
                finishRegistration()
                print("\nAll other goblins selected have been automatically registered to vote")
                print("\nWelcome to the Voting section! Choose a goblin to vote")
@@ -137,70 +137,91 @@ if __name__ == "__main__":
                if choice == '1':
                
                      print("\nHello, Grimp.")
-                     vote(grimp)
+                     verify_vote(grimp, vote(grimp))
+                     print("\t1. Return.")
+                     choice = input(">> ")
+                     print()
 
                      if choice == '1':
-                        break
+                        continue
                      else: 
                         print("Error, unknown option {}.".format(choice))
 
                elif choice == '2':
                
                      print("\nHello, Gumpy.")
-                     vote(gumpy)
+                     verify_vote(gumpy, vote(gumpy))
+                     print("\t1. Return.")
+                     choice = input(">> ")
+                     print()
 
                      if choice == '1':
-                        break
+                        continue
                      else: 
                         print("Error, unknown option {}.".format(choice))
 
                elif choice == '3':
                
                      print("\nHello, Grimble.")
-                     vote(grimble)
+                     verify_vote(grimble, vote(grimble))
+                     print("\t1. Return.")
+                     choice = input(">> ")
+                     print()
 
                      if choice == '1':
-                        break
+                        continue
                      else: 
                         print("Error, unknown option {}.".format(choice))
 
                elif choice == '4':
                
                      print("\nHello, Gronk.")
-                     vote(gronk)
+                     verify_vote(gronk, vote(gronk))
+                     print("\t1. Return.")
+                     choice = input(">> ")
+                     print()
 
                      if choice == '1':
-                        break
+                        continue
                      else: 
                         print("Error, unknown option {}.".format(choice))
          
                elif choice == '5':
             
                      print("\nHello, Grilbo.")
-                     vote(grilbo)
+                     verify_vote(grilbo, vote(grilbo))
+                     print("\t1. Return.")
+                     choice = input(">> ")
+                     print()
 
                      if choice == '1':
-                        break
+                        continue
                      else: 
                         print("Error, unknown option {}.".format(choice))
          
                elif choice == '6':
                
                      print("\nHello, Garth.")
-                     vote(garth)
+                     verify_vote(garth, vote(garth))
+                     print("\t1. Return.")
+                     choice = input(">> ")
+                     print()
 
                      if choice == '1':
-                         break
+                         continue
                      else: 
                         print("Error, unknown option {}.".format(choice))
          
                elif choice == '7':
                
                      print("\nHello, Gert.")
-                     vote(gert)
+                     verify_vote(gert, vote(gert))
+                     print("\t1. Return.")
+                     choice = input(">> ")
+                     print()
 
                      if choice == '1':
-                        break
+                        continue
                      else: 
                         print("Error, unknown option {}.".format(choice))
 
@@ -214,10 +235,13 @@ if __name__ == "__main__":
                      print(result)
 
                      print("Thank you for voting in the Goblin Election.")
+                     print("To run another election please restart the program.\n")
+                     break
                   
 
                elif choice == '9':
-                  print("Returning to Registration\n")
+                  print("Returning to registering screen\n")
+                  print("In order to fully leave choose quit again\n")
                   break
                
                else: 
@@ -229,3 +253,5 @@ if __name__ == "__main__":
          
          else: 
             print("Error, unknown option {}.".format(choice))
+         break
+      
