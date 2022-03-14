@@ -45,22 +45,28 @@ if __name__ == "__main__":
                 # Register to vote
                 if choice == '1':
                     register(grimp, False)
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES key has been generated.")
-                    print("Your decrypted AES key has been generated.")
-                    print("Your validation number has been generated, thank you for registering!")
-                    break
+                    print("Thank you for registering!")
+                    print("\t1. Return.")
+                    choice = input(">> ")
+                    print()
+
+                    if choice == '1':
+                        continue
+                    else: 
+                        print("Error, unknown option {}.".format(choice))
+                        break
                         
                 # Cast vote
                 elif choice == '2':
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES message has been generated.")
-                    print("Your decrypted AES message has been generated.")
-                    
-                    # Vote
-                    vote(grimp)
-                    print("Your vote has been casted, thank you for voting!")
-                    break
+                    verify_vote(grimp, vote(grimp))
+                    print("\t1. Return.")
+                    choice = input(">> ")
+                    print()
+
+                    if choice == '1':
+                        continue
+                    else: 
+                        print("Error, unknown option {}.".format(choice))
     
                 # Request results
                 elif choice == '3':
@@ -87,42 +93,6 @@ if __name__ == "__main__":
                 print("\t3. Request results.")
                 print("\t4. Quit \n")
                 choice = input(">> ")
-            
-                # Register to vote
-                if choice == '1':
-                    register(gumpy, False)
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES key has been generated.")
-                    print("Your decrypted AES key has been generated.")
-                    print("Your validation number has been generated, thank you for registering!")
-                    break
-                        
-                # Cast vote
-                elif choice == '2':
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES message has been generated.")
-                    print("Your decrypted AES message has been generated.")
-                    
-                    # Vote
-                    vote(gumpy)
-                    print("Your vote has been casted, thank you for voting!")
-                    break
-    
-                # Request results
-                elif choice == '3':
-                    print("All votes have been counted.")
-                    finishVoting()
-                    tallyVotes()
-                    print("Thank you for voting in the Goblin Election!")
-                    break
-                    
-                # Quit
-                elif choice == '4':
-                    print("Returning to main menu... \n")
-                    break
-    
-                else: 
-                    print("Error, unknown option{}.".format(choice))
         
             # User 3
             elif choice == '3': 
@@ -134,42 +104,6 @@ if __name__ == "__main__":
                 print("\t4. Quit \n")
                 choice = input(">> ")
             
-                # Register to vote
-                if choice == '1':
-                    register(grimble, False)
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES key has been generated.")
-                    print("Your decrypted AES key has been generated.")
-                    print("Your validation number has been generated, thank you for registering!")
-                    break
-                        
-                # Cast vote
-                elif choice == '2':
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES message has been generated.")
-                    print("Your decrypted AES message has been generated.")
-                    
-                    # Vote
-                    vote(grimble)
-                    print("Your vote has been casted, thank you for voting!")
-                    break
-    
-                # Request results
-                elif choice == '3':
-                    print("All votes have been counted.")
-                    finishVoting()
-                    tallyVotes()
-                    print("Thank you for voting in the Goblin Election!")
-                    break
-                    
-                # Quit
-                elif choice == '4':
-                    print("Returning to main menu... \n")
-                    break
-    
-                else: 
-                    print("Error, unknown option{}.".format(choice))
-            
             # User 4
             elif choice == '4': 
                 print("\nHello, Gronk. What would you like to do?")
@@ -179,42 +113,6 @@ if __name__ == "__main__":
                 print("\t3. Request results.")
                 print("\t4. Quit \n")
                 choice = input(">> ")
-            
-                # Register to vote
-                if choice == '1':
-                    register(gronk, False)
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES key has been generated.")
-                    print("Your decrypted AES key has been generated.")
-                    print("Your validation number has been generated, thank you for registering!")
-                    break
-                        
-                # Cast vote
-                elif choice == '2':
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES message has been generated.")
-                    print("Your decrypted AES message has been generated.")
-                    
-                    # Vote
-                    vote(gronk)
-                    print("Your vote has been casted, thank you for voting!")
-                    break
-    
-                # Request results
-                elif choice == '3':
-                    print("All votes have been counted.")
-                    finishVoting()
-                    tallyVotes()
-                    print("Thank you for voting in the Goblin Election!")
-                    break
-                    
-                # Quit
-                elif choice == '4':
-                    print("Returning to main menu... \n")
-                    break
-    
-                else: 
-                    print("Error, unknown option{}.".format(choice))
             
             # User 5
             elif choice == '5': 
@@ -226,42 +124,6 @@ if __name__ == "__main__":
                 print("\t4. Quit \n")
                 choice = input(">> ")
             
-                # Register to vote
-                if choice == '1':
-                    register(grilbo, False)
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES key has been generated.")
-                    print("Your decrypted AES key has been generated.")
-                    print("Your validation number has been generated, thank you for registering!")
-                    break
-                        
-                # Cast vote
-                elif choice == '2':
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES message has been generated.")
-                    print("Your decrypted AES message has been generated.")
-                    
-                    # Vote
-                    vote(grilbo)
-                    print("Your vote has been casted, thank you for voting!")
-                    break
-    
-                # Request results
-                elif choice == '3':
-                    print("All votes have been counted.")
-                    finishVoting()
-                    tallyVotes()
-                    print("Thank you for voting in the Goblin Election!")
-                    break
-                    
-                # Quit
-                elif choice == '4':
-                    print("Returning to main menu... \n")
-                    break
-    
-                else: 
-                    print("Error, unknown option{}.".format(choice))
-            
             # User 6
             elif choice == '6': 
                 print("\nHello, Garth. What would you like to do?")
@@ -272,42 +134,6 @@ if __name__ == "__main__":
                 print("\t4. Quit \n")
                 choice = input(">> ")
             
-                # Register to vote
-                if choice == '1':
-                    register(garth, False)
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES key has been generated.")
-                    print("Your decrypted AES key has been generated.")
-                    print("Your validation number has been generated, thank you for registering!")
-                    break
-                        
-                # Cast vote
-                elif choice == '2':
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES message has been generated.")
-                    print("Your decrypted AES message has been generated.")
-                    
-                    # Vote
-                    vote(garth)
-                    print("Your vote has been casted, thank you for voting!")
-                    break
-    
-                # Request results
-                elif choice == '3':
-                    print("All votes have been counted.")
-                    finishVoting()
-                    tallyVotes()
-                    print("Thank you for voting in the Goblin Election!")
-                    break
-                    
-                # Quit
-                elif choice == '4':
-                    print("Returning to main menu... \n")
-                    break
-    
-                else: 
-                    print("Error, unknown option{}.".format(choice))
-            
             # User 7
             elif choice == '7': 
                 print("\nHello, Gert. What would you like to do?")
@@ -317,42 +143,6 @@ if __name__ == "__main__":
                 print("\t3. Request results.")
                 print("\t4. Quit \n")
                 choice = input(">> ")
-            
-                # Register to vote
-                if choice == '1':
-                    register(gert, False)
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES key has been generated.")
-                    print("Your decrypted AES key has been generated.")
-                    print("Your validation number has been generated, thank you for registering!")
-                    break
-                        
-                # Cast vote
-                elif choice == '2':
-                    print("Your signature number has been verified.")
-                    print("Your encrypted AES message has been generated.")
-                    print("Your decrypted AES message has been generated.")
-                    
-                    # Vote
-                    vote(gert)
-                    print("Your vote has been casted, thank you for voting!")
-                    break
-    
-                # Request results
-                elif choice == '3':
-                    print("All votes have been counted.")
-                    finishVoting()
-                    tallyVotes()
-                    print("Thank you for voting in the Goblin Election!")
-                    break
-                    
-                # Quit choice menu
-                elif choice == '4':
-                    print("Returning to main menu... \n")
-                    break
-    
-                else: 
-                    print("Error, unknown option{}.".format(choice))
             
             # Quit main menu
             elif choice == '8':
