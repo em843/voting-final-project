@@ -40,7 +40,8 @@ if __name__ == "__main__":
                if choice == '1':
                      continue
                else: 
-                     print("Error, unknown option {}.".format(choice))
+                     continue
+
          
          elif choice == '2':
                
@@ -52,7 +53,7 @@ if __name__ == "__main__":
                if choice == '1':
                      continue
                else: 
-                     print("Error, unknown option {}.".format(choice))
+                     continue
          
          elif choice == '3':
                
@@ -64,7 +65,7 @@ if __name__ == "__main__":
                if choice == '1':
                      continue
                else: 
-                     print("Error, unknown option {}.".format(choice))
+                     continue
          
          elif choice == '4':
                
@@ -76,7 +77,7 @@ if __name__ == "__main__":
                if choice == '1':
                      continue
                else: 
-                     print("Error, unknown option {}.".format(choice))
+                     continue
          
          elif choice == '5':
                
@@ -88,7 +89,7 @@ if __name__ == "__main__":
                if choice == '1':
                      continue
                else: 
-                     print("Error, unknown option {}.".format(choice))
+                     continue
          
          elif choice == '6':
                
@@ -100,7 +101,7 @@ if __name__ == "__main__":
                if choice == '1':
                      continue
                else: 
-                     print("Error, unknown option {}.".format(choice))
+                     continue
          
          elif choice == '7':
                
@@ -112,7 +113,7 @@ if __name__ == "__main__":
                if choice == '1':
                      continue
                else: 
-                     print("Error, unknown option {}.".format(choice))
+                     continue
          
          elif choice == '8':
             while True:
