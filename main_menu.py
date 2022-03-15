@@ -8,11 +8,8 @@ We create a secret to send them, encrypt it with the public key, and they can de
 
 
 """
-from array import array
 from unittest import result
 from data import *
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives.asymmetric import rsa
 from functions import *
 
 if __name__ == "__main__":

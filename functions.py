@@ -126,6 +126,8 @@ def finishVoting():
         if user.vote == 0:
             user.vote = random.randint(1, 2)
             voter_count += 1
+        else:
+            print(f"{user} has been voted for")
     print(f"{voter_count} users voted for")
 
 def tallyVotes():
@@ -141,11 +143,6 @@ def tallyVotes():
     if mister_grumble_count < madaam_goob_count:
         return f"MADAM GOOB, with {madaam_goob_count} votes!\n"
 
-# register(grimp, False)
-# register(grilbo, False)
-# finishRegistration()
-
-
 
 
 """
@@ -158,9 +155,12 @@ The CTF
 Asks the user for a vote, then signs and encrypts it
 """
 def vote(user):
+    if user.vote != 0:
+        print(f"\nYour vote has already been counted. Press '8' to run the election.")
+        return 0
     vote = input("Enter the number of the candidate you want to vote for: \n1. Mr. Grumble \n2. Madam Goob\n\nYour vote: ")
     while vote != "1" and vote != "2":
-        print(f"Please enter a number, either 1 or 2.")
+        print(f"\nPlease enter a number, either 1 or 2.\n>>")
         vote = input("Enter the number of the candidate you want to vote for: \n1. Mr. Grumble \n2. Madam Goob\n")
     # Combine valnum and vote as a string (prevents attaching vote to someone else's valnum)
     combined_x = str(vote) + str(user.valnum)
@@ -176,6 +176,8 @@ def vote(user):
 Decrypt vote + valnum and verify that user is registered
 """
 def verify_vote(user, encrypted_vote):
+    if encrypted_vote == 0:
+        return
     # Decrypt with AES
     vote_bytestring = str(encrypted_vote).encode()
     decrypted_x = allAES(vote_bytestring, user.aeskey) 
@@ -204,18 +206,6 @@ def checkValnum(valnum, val_list):
     for v in val_list:
         if v == valnum:
             print("Validation number matches list from CLA: vote is valid")
-            return
+            return True
     print("Vote is invalid")
-    return
-
-
-
-# register(grimp, False)
-
-# finishRegistration()
-
-# verify_vote(grimp, vote(grimp))
-# # TODO implement simplified for voting functions
-
-# finishVoting()
-# tallyVotes()
+    return False
